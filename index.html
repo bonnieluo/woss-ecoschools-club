@@ -1,0 +1,2917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WOSS EcoClub | White Oaks Secondary School</title>
+  <meta name="description" content="Official website for the White Oaks Secondary School (WOSS) EcoClub featuring projects, initiatives, student executive team, and club registration." />
+  <meta property="og:title" content="WOSS EcoClub | White Oaks Secondary School" />
+  <meta property="og:description" content="Making White Oaks Secondary School greener, one sustainable step at a time." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CSS Variables & Design Tokens
+       ========================================================================== */
+    :root {
+      --color-primary: #1b5e20;
+      --color-primary-hover: #144918;
+      --color-primary-light: #2e7d32;
+      --color-accent: #2e8b57;
+      --color-accent-soft: #e8f5e9;
+      --color-accent-border: #c8e6c9;
+      --color-highlight: #43a047;
+      
+      --color-bg: #f8faf8;
+      --color-surface: #ffffff;
+      --color-surface-subtle: #f1f5f2;
+      --color-border: #e2ece4;
+      --color-border-hover: #cbdcd0;
+      
+      --color-text: #19251c;
+      --color-text-muted: #53685a;
+      --color-text-subtle: #798e80;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 1px 3px rgba(25, 37, 28, 0.05);
+      --shadow-md: 0 4px 14px rgba(25, 37, 28, 0.07);
+      --shadow-lg: 0 12px 28px rgba(25, 37, 28, 0.09);
+      
+      --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      
+      --transition-base: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-display);
+      color: var(--color-text);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-primary-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      text-wrap: balance;
+    }
+
+    /* ==========================================================================
+       Header & Navigation Bar
+       ========================================================================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--color-border);
+      transition: var(--transition-base);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      height: 74px;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .logo-container {
+      position: relative;
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border: 1.5px solid var(--color-accent-border);
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .brand-title span.badge {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      background: var(--color-accent-soft);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-full);
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.65rem;
+    }
+
+    .nav-link {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      transition: color 0.15s ease;
+      white-space: nowrap;
+      position: relative;
+      padding: 0.4rem 0;
+      cursor: pointer;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--color-primary);
+    }
+
+    .nav-link.active {
+      color: var(--color-primary);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--color-primary);
+      border-radius: var(--radius-full);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-btn {
+      background: none;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .dropdown-btn svg.chevron {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.2s ease;
+    }
+
+    .dropdown:hover .dropdown-btn svg.chevron,
+    .dropdown.open .dropdown-btn svg.chevron {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      width: 220px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      padding: 0.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: all 0.2s ease;
+      z-index: 120;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown.open .dropdown-menu,
+    .dropdown-menu:hover {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 0.85rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-text);
+      border-radius: var(--radius-sm);
+      transition: background 0.15s ease, color 0.15s ease;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .dropdown-item:hover {
+      background: var(--color-accent-soft);
+      color: var(--color-primary);
+    }
+
+    .dropdown-item .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.35rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      transition: var(--transition-base);
+      cursor: pointer;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(27, 94, 32, 0.25);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-primary-hover);
+      box-shadow: 0 4px 14px rgba(27, 94, 32, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: var(--color-primary);
+      border: 1px solid var(--color-border);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-secondary:hover {
+      background-color: #ffffff;
+      border-color: var(--color-accent);
+      color: var(--color-primary-hover);
+    }
+
+    .btn-lg {
+      padding: 0.85rem 1.85rem;
+      font-size: 1.05rem;
+      border-radius: var(--radius-md);
+    }
+
+    .hamburger-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--color-border);
+      padding: 0.5rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: var(--color-text);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hamburger-btn svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 75px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(16px);
+      padding: 1.5rem;
+      overflow-y: auto;
+      z-index: 99;
+      border-bottom: 1px solid var(--color-border);
+      flex-direction: column;
+      gap: 1.25rem;
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-nav-link {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-text);
+      padding: 0.75rem 0.5rem;
+      border-bottom: 1px solid var(--color-surface-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .mobile-sublinks {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-left: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .mobile-sublink {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      padding: 0.4rem 0.5rem;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       Hero Section with Moving Forest / Lake Aerial Video Background
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      padding: 6.5rem 0 6rem 0;
+      border-bottom: 1px solid var(--color-border);
+      overflow: hidden;
+      color: #ffffff;
+      background-color: #0b1a0e;
+    }
+
+    .hero-video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-bg-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      opacity: 0.7;
+      filter: saturate(1.25) brightness(0.8);
+    }
+
+    .hero-video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(14, 31, 18, 0.6) 0%, rgba(9, 20, 12, 0.9) 100%),
+                  linear-gradient(180deg, rgba(11, 26, 14, 0.4) 0%, rgba(11, 26, 14, 0.95) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 840px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #a7f3d0;
+      padding: 0.4rem 1.15rem;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-title {
+      font-size: clamp(2.35rem, 4.5vw, 3.85rem);
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      margin-bottom: 1.5rem;
+      text-wrap: balance;
+      color: #ffffff;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.125rem, 2vw, 1.35rem);
+      color: #e2ece4;
+      line-height: 1.6;
+      margin-bottom: 2.25rem;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      text-wrap: balance;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.15rem;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+    }
+
+    /* ==========================================================================
+       About & Mission Section
+       ========================================================================== */
+    .about-section {
+      padding: 6rem 0;
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .mission-narrative {
+      max-width: 820px;
+      margin: 0 auto 4rem auto;
+      text-align: center;
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+      line-height: 1.75;
+    }
+
+    .mission-narrative strong {
+      color: var(--color-text);
+      font-weight: 600;
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .focus-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-base);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .focus-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-accent-border);
+      background: var(--color-surface);
+    }
+
+    .focus-card-media {
+      position: relative;
+      width: 100%;
+      height: 210px;
+      overflow: hidden;
+      background: #e2ece4;
+    }
+
+    .focus-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .focus-card:hover .focus-card-img {
+      transform: scale(1.05);
+    }
+
+    .focus-card-body {
+      padding: 1.75rem 1.65rem 1.85rem 1.65rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .focus-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.85rem;
+      color: var(--color-text);
+    }
+
+    .focus-description {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .focus-tags {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--color-primary);
+      font-weight: 600;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* ==========================================================================
+       Projects Section
+       ========================================================================== */
+    .projects-section {
+      padding: 6rem 0;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .projects-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      padding: 0.75rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-tabs {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.55rem 1.15rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .filter-btn:hover {
+      color: var(--color-primary);
+      background: var(--color-surface-subtle);
+    }
+
+    .filter-btn.active {
+      color: #ffffff;
+      background: var(--color-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-dropdown-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .filter-dropdown-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+
+    .filter-select {
+      padding: 0.5rem 2rem 0.5rem 0.85rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2353685a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.65rem center;
+      background-size: 14px;
+      outline: none;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-base);
+      position: relative;
+    }
+
+    .project-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-accent-border);
+      transform: translateY(-2px);
+    }
+
+    .project-card.hidden {
+      display: none !important;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-status {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+    }
+
+    .status-current {
+      background: #e8f5e9;
+      color: #1b5e20;
+      border: 1px solid #c8e6c9;
+    }
+
+    .status-past {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+    }
+
+    .status-future {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .project-name {
+      font-size: 1.4rem;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .project-summary {
+      font-size: 0.98rem;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .project-meta-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.875rem;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--color-text-muted);
+    }
+
+    .meta-row strong {
+      color: var(--color-text);
+      font-weight: 600;
+      min-width: 90px;
+    }
+
+    .project-accordion-toggle {
+      background: none;
+      border: none;
+      color: var(--color-primary);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0;
+      margin-top: 0.5rem;
+    }
+
+    .project-accordion-toggle:hover {
+      text-decoration: underline;
+    }
+
+    .project-accordion-toggle svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.2s ease;
+    }
+
+    .project-accordion-toggle[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
+
+    .project-expanded-content {
+      display: none;
+      padding-top: 1rem;
+      margin-top: 0.75rem;
+      border-top: 1px dashed var(--color-border);
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .project-expanded-content.show {
+      display: block;
+    }
+
+    /* Executive Callout Card inside Projects */
+    .exec-promo-card {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #f0fdf4 0%, #e8f5e9 100%);
+      border: 1.5px solid var(--color-accent-border);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .exec-promo-info h3 {
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .exec-promo-info p {
+      font-size: 0.98rem;
+      color: var(--color-text-muted);
+      max-width: 650px;
+    }
+
+    /* ==========================================================================
+       Dedicated Executive Team Page (New Page View)
+       ========================================================================== */
+    .executives-page-view {
+      padding: 4.5rem 0 6.5rem 0;
+      background: var(--color-bg);
+      min-height: 80vh;
+    }
+
+    .page-back-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition-base);
+    }
+
+    .back-btn:hover {
+      background: var(--color-accent-soft);
+      border-color: var(--color-accent-border);
+      transform: translateX(-2px);
+    }
+
+    .page-breadcrumb {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    .page-breadcrumb a {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .exec-page-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem auto;
+    }
+
+    .exec-page-title {
+      font-size: clamp(2.2rem, 3.8vw, 3.25rem);
+      color: #123516;
+      margin-bottom: 1rem;
+    }
+
+    .exec-page-subtitle {
+      font-size: 1.15rem;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+    }
+
+    /* Executive Unified Grid (Single Unified Roster - Centered Layout) */
+    .executives-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.75rem;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .exec-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-base);
+      position: relative;
+      width: calc(25% - 1.35rem);
+      min-width: 240px;
+      max-width: 275px;
+      flex: 0 1 calc(25% - 1.35rem);
+    }
+
+    .exec-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-accent-border);
+    }
+
+    /* Executive Image Placeholder & Avatar */
+    .exec-photo-box {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin: 0 auto 1.25rem auto;
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 12px rgba(27, 94, 32, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .exec-photo-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #eaf5ec 0%, #d2ebd4 100%);
+      pointer-events: none;
+    }
+
+    .exec-avatar-icon {
+      width: 48px;
+      height: 48px;
+      color: var(--color-primary);
+      opacity: 0.72;
+    }
+
+    .exec-photo-img {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .exec-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      justify-content: center;
+    }
+
+    .exec-grade-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: var(--color-accent-soft);
+      color: var(--color-primary);
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 0.6rem;
+      border: 1px solid var(--color-accent-border);
+    }
+
+    .exec-role-text {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      line-height: 1.4;
+    }
+
+
+    /* ==========================================================================
+       Contact & Registration Form Section
+       ========================================================================== */
+    .contact-section {
+      padding: 6rem 0;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .contact-info-panel {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-info-panel h3 {
+      font-size: 1.65rem;
+      margin-bottom: 1rem;
+      color: var(--color-primary);
+    }
+
+    .contact-info-panel p {
+      font-size: 0.98rem;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    .meeting-card {
+      background: var(--color-accent-soft);
+      border: 1px solid var(--color-accent-border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .meeting-card-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .meeting-card-details {
+      font-size: 0.9375rem;
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    /* Connect Channels (Instagram & Google Classroom) */
+    .channel-connect-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .channel-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .channel-card:hover {
+      border-color: var(--color-primary-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .channel-card.instagram-card:hover {
+      border-color: #e1306c;
+    }
+
+    .channel-card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .instagram-card .channel-card-icon {
+      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+      color: #e1306c;
+      border: 1px solid #fbcfe8;
+    }
+
+    .classroom-card .channel-card-icon {
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      color: #059669;
+      border: 1px solid #a7f3d0;
+    }
+
+    .email-card .channel-card-icon {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+    }
+
+    .channel-card.email-card:hover {
+      border-color: #2563eb;
+    }
+
+    .channel-card.email-card:hover .channel-external-arrow {
+      color: #2563eb;
+    }
+
+    .channel-card.full-width {
+      grid-column: span 2;
+    }
+
+    .channel-card-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .channel-label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .channel-handle {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-text);
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .channel-external-arrow {
+      color: var(--color-text-subtle);
+      transition: transform 0.2s ease, color 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .channel-card:hover .channel-external-arrow {
+      transform: translate(2px, -2px);
+      color: #e1306c;
+    }
+
+    .classroom-code-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .classroom-code {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--color-primary);
+      background: var(--color-accent-soft);
+      padding: 0.1rem 0.45rem;
+      border-radius: var(--radius-sm);
+      border: 1px dashed var(--color-accent-border);
+    }
+
+    .btn-copy-code {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-copy-code:hover {
+      background: var(--color-accent-soft);
+      border-color: var(--color-accent);
+      color: var(--color-primary);
+    }
+
+    .btn-copy-code.copied {
+      background: #e8f5e9;
+      border-color: #81c784;
+      color: #1b5e20;
+    }
+
+    @media (max-width: 600px) {
+      .channel-connect-grid {
+        grid-template-columns: 1fr;
+      }
+      .channel-card.full-width {
+        grid-column: span 1;
+      }
+    }
+
+    .benefits-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+
+    .benefit-item svg {
+      width: 18px;
+      height: 18px;
+      color: var(--color-primary-light);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .contact-form-panel {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-label .required-star {
+      color: #dc2626;
+      margin-left: 0.2rem;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      color: var(--color-text);
+      background-color: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      outline: none;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+    }
+
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--color-text);
+      cursor: pointer;
+      padding: 0.6rem 0.85rem;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      user-select: none;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--color-primary);
+      cursor: pointer;
+    }
+
+    .form-alert {
+      display: none;
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      margin-top: 1.5rem;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .form-alert.success {
+      display: block;
+      background: #e8f5e9;
+      border: 1px solid #a5d6a7;
+      color: #1b5e20;
+    }
+
+    .form-alert.error {
+      display: block;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
+
+    .alert-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .alert-header svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .alert-details {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-top: 0.5rem;
+    }
+
+    .btn-reset-form {
+      margin-top: 1rem;
+      background: #ffffff;
+      color: var(--color-primary);
+      border: 1px solid #a5d6a7;
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    /* ==========================================================================
+       Site Footer with Ambient Scenic Background
+       ========================================================================== */
+    .site-footer {
+      position: relative;
+      background: #0f1e14;
+      color: #e2ece4;
+      padding: 4.5rem 0 2.5rem 0;
+      border-top: 1px solid #1c2e21;
+      overflow: hidden;
+    }
+
+    .footer-video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+      filter: saturate(1.2) brightness(0.6);
+      pointer-events: none;
+    }
+
+    .footer-content-wrap {
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.25fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .footer-brand h4 {
+      font-size: 1.35rem;
+      color: #ffffff;
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: #9db2a2;
+      line-height: 1.6;
+      max-width: 320px;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a {
+      color: #9db2a2;
+      transition: color 0.15s ease;
+      cursor: pointer;
+    }
+
+    .footer-links a:hover {
+      color: #4ade80;
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.8125rem;
+      color: #798e80;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .focus-grid { grid-template-columns: repeat(2, 1fr); }
+      .exec-card { width: calc(33.333% - 1.25rem); max-width: 290px; flex: 0 1 calc(33.333% - 1.25rem); }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-desktop { display: none; }
+      .header-actions .btn { display: none; }
+      .hamburger-btn { display: flex; }
+      .hero-section { padding: 4.5rem 0 4rem 0; }
+      .hero-title { font-size: 2.25rem; }
+      .focus-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .exec-card { width: calc(50% - 1rem); max-width: 320px; flex: 0 1 calc(50% - 1rem); }
+      .checkbox-group { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .exec-promo-card { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .exec-card { width: 100%; max-width: 340px; flex: 0 1 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Header & Navigation Bar
+       ========================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <!-- Zone 1: Official Logo & Brand -->
+        <a href="#home" class="brand-link" id="brand-logo-link" aria-label="WOSS EcoClub Home">
+          <div class="logo-container">
+            <img 
+              src="/assets/aistudio/Green_And_Cream_Aesthetic_Eco_Label_a95defa9.png" 
+              alt="WOSS EcoSchools Environmental Club Official Logo" 
+              class="logo-img"
+              onerror="this.onerror=null; this.src='assets/aistudio/Green_And_Cream_Aesthetic_Eco_Label_a95defa9.png';"
+            />
+          </div>
+          <div class="brand-title">
+            <span>WOSS EcoClub</span>
+            <span class="badge">Oakville</span>
+          </div>
+        </a>
+
+        <!-- Zone 2: Navigation Links -->
+        <nav class="nav-desktop" aria-label="Main Navigation">
+          <a class="nav-link nav-page-btn" data-target="home">Home</a>
+          <a class="nav-link nav-page-btn" data-target="about">About Us</a>
+          
+          <!-- Projects Dropdown -->
+          <div class="dropdown" id="projects-dropdown">
+            <button class="nav-link dropdown-btn" aria-expanded="false" aria-haspopup="true">
+              <span>Projects</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="dropdown-menu" role="menu">
+              <a class="dropdown-item nav-project-filter" data-filter="all">
+                <span class="dot"></span>
+                <span>All Projects</span>
+              </a>
+              <a class="dropdown-item nav-project-filter" data-filter="current">
+                <span class="dot"></span>
+                <span>Current Projects</span>
+              </a>
+              <a class="dropdown-item nav-project-filter" data-filter="past">
+                <span class="dot"></span>
+                <span>Past Projects</span>
+              </a>
+              <a class="dropdown-item nav-project-filter" data-filter="future">
+                <span class="dot"></span>
+                <span>Future Projects</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Dedicated Executive Team Page Link -->
+          <a class="nav-link nav-page-btn" data-target="executives" id="nav-executives-link">Executive Team</a>
+          <a class="nav-link nav-page-btn" data-target="contact">Contact Us</a>
+        </nav>
+
+        <!-- Zone 3: CTA & Mobile Hamburger -->
+        <div class="header-actions">
+          <a class="btn btn-primary nav-page-btn" data-target="contact">Join Club</a>
+          <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <svg id="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-menu" id="mobile-menu" aria-label="Mobile Navigation">
+      <a class="mobile-nav-link nav-page-btn" data-target="home">Home</a>
+      <a class="mobile-nav-link nav-page-btn" data-target="about">About Us</a>
+      <div>
+        <div class="mobile-nav-link" style="border: none; padding-bottom: 0.25rem;">Projects</div>
+        <div class="mobile-sublinks">
+          <a class="mobile-sublink nav-project-filter" data-filter="all">· All Projects</a>
+          <a class="mobile-sublink nav-project-filter" data-filter="current">· Current Projects</a>
+          <a class="mobile-sublink nav-project-filter" data-filter="past">· Past Projects</a>
+          <a class="mobile-sublink nav-project-filter" data-filter="future">· Future Projects</a>
+        </div>
+      </div>
+      <a class="mobile-nav-link nav-page-btn" data-target="executives">Executive Team</a>
+      <a class="mobile-nav-link nav-page-btn" data-target="contact">Contact Us</a>
+      <div style="margin-top: 1rem;">
+        <a class="btn btn-primary nav-page-btn" data-target="contact" style="width: 100%;">Join WOSS EcoClub</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN SITE PAGE VIEW (Home, About, Projects, Contact)
+       ========================================================================== -->
+  <div id="page-main" class="page-container">
+    <main>
+      <!-- ==========================================================================
+           Hero Section (Moving Aerial Forest / Lake Video Background)
+           ========================================================================== -->
+      <section class="hero-section" id="home">
+        <!-- Moving Bird's-Eye Forest / Lake Drone Video -->
+        <div class="hero-video-container">
+          <video 
+            class="hero-bg-video" 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            poster="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80"
+          >
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-dense-green-forest-41551-large.mp4" type="video/mp4">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+          </video>
+          <div class="hero-video-overlay"></div>
+        </div>
+
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-kicker">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+              </svg>
+              <span>White Oaks Secondary School · EcoClub Chapter</span>
+            </div>
+
+            <!-- Title changed per request: "Welcome to WOSS EcoClub" (leaf removed) -->
+            <h1 class="hero-title">Welcome to WOSS EcoClub</h1>
+
+            <p class="hero-subtitle">
+              Making White Oaks Secondary School greener, one sustainable step at a time.
+            </p>
+
+            <div class="hero-ctas">
+              <a class="btn btn-primary btn-lg nav-page-btn" data-target="contact">
+                <span>Join the Movement</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a class="btn btn-secondary btn-lg nav-page-btn" data-target="projects">Explore Our Projects</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           About & Mission Section
+           ========================================================================== -->
+      <section class="about-section" id="about">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-kicker">Who We Are & What We Believe</span>
+            <h2 class="section-title">Our Mission</h2>
+            <p class="section-subtitle">
+              Empowering students to drive lasting environmental change at White Oaks and beyond.
+            </p>
+          </div>
+
+          <div class="mission-narrative">
+            <p>
+              Founded by <strong>Bonnie</strong>, with <strong>Bonnie</strong> and <strong>Elif</strong> serving as Co-Presidents, 
+              the WOSS EcoClub champions environmental stewardship across White Oaks Secondary School in Oakville, Ontario. We bridge the gap between climate awareness and hands-on school community action—turning sustainability from an abstract idea into tangible projects that enhance biodiversity, cut energy waste, and cultivate youth leadership.
+            </p>
+          </div>
+
+          <!-- 3 Core Focus Areas -->
+          <div class="focus-grid">
+            <article class="focus-card">
+              <div class="focus-card-media">
+                <img 
+                  src="/assets/aistudio/man-collecting-plastic-garbage-polluted-park_5ab4e917.jpg" 
+                  alt="Student volunteer collecting plastic waste for recycling" 
+                  class="focus-card-img" 
+                  loading="lazy"
+                />
+              </div>
+              <div class="focus-card-body">
+                <h3 class="focus-title">Waste Reduction & Circular Initiatives</h3>
+                <p class="focus-description">
+                  Diverting single-use plastics from landfills through school supply swaps, classroom sorting drives, and circular student-sharing programs that make reuse effortless.
+                </p>
+                <div class="focus-tags">
+                  <span>StudyCycle</span>
+                  <span>·</span>
+                  <span>Locker Cleanouts</span>
+                  <span>·</span>
+                  <span>Zero-Waste</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="focus-card">
+              <div class="focus-card-media">
+                <img 
+                  src="/assets/aistudio/beautiful-couple-works-garden_7f097a95.jpg" 
+                  alt="Student volunteers tending to native green spaces and gardens" 
+                  class="focus-card-img" 
+                  loading="lazy"
+                />
+              </div>
+              <div class="focus-card-body">
+                <h3 class="focus-title">Campus Biodiversity & Green Spaces</h3>
+                <p class="focus-description">
+                  Restoring ecological balance in our courtyard and school perimeter by planting drought-tolerant native perennials, maintaining pollinator stations, and nurturing tree canopies.
+                </p>
+                <div class="focus-tags">
+                  <span>Pollinator Garden</span>
+                  <span>·</span>
+                  <span>Native Flora</span>
+                  <span>·</span>
+                  <span>Habitat Care</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="focus-card">
+              <div class="focus-card-media">
+                <img 
+                  src="/assets/aistudio/20260928_145817_f0aefe91.jpg" 
+                  alt="WOSS EcoClub educational presentation in the classroom" 
+                  class="focus-card-img" 
+                  loading="lazy"
+                />
+              </div>
+              <div class="focus-card-body">
+                <h3 class="focus-title">Climate Education & Community Action</h3>
+                <p class="focus-description">
+                  Organizing student-led workshops, monitoring classroom energy efficiency, and hosting community cleanups to inspire daily sustainable habits across the entire student body.
+                </p>
+                <div class="focus-tags">
+                  <span>Energy Audits</span>
+                  <span>·</span>
+                  <span>Awareness Days</span>
+                  <span>·</span>
+                  <span>Youth Advocacy</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           Projects Section
+           ========================================================================== -->
+      <section class="projects-section" id="projects">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-kicker">Tangible Impact Across WOSS</span>
+            <h2 class="section-title">Club Initiatives & Projects</h2>
+            <p class="section-subtitle">
+              Explore our ongoing programs, celebrate past milestones, and preview upcoming campaigns designed to make White Oaks greener.
+            </p>
+          </div>
+
+          <!-- Interactive Filter Controls -->
+          <div class="projects-controls">
+            <div class="filter-tabs" role="tablist" aria-label="Project Status Filter">
+              <button class="filter-btn active" role="tab" aria-selected="true" data-filter="all">All Initiatives</button>
+              <button class="filter-btn" role="tab" aria-selected="false" data-filter="current">Current Projects</button>
+              <button class="filter-btn" role="tab" aria-selected="false" data-filter="past">Past Projects</button>
+              <button class="filter-btn" role="tab" aria-selected="false" data-filter="future">Future Projects</button>
+            </div>
+
+            <div class="filter-dropdown-wrap">
+              <label for="project-filter-select" class="filter-dropdown-label">Quick Filter:</label>
+              <select id="project-filter-select" class="filter-select" aria-label="Filter projects by category">
+                <option value="all">Show All Projects</option>
+                <option value="current">Current Projects Only</option>
+                <option value="past">Past Completed Projects</option>
+                <option value="future">Future Upcoming Projects</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Projects Grid -->
+          <div class="projects-grid" id="projects-grid">
+            
+            <!-- Current Project 1: StudyCycle -->
+            <article class="project-card" data-category="current">
+              <div class="project-header">
+                <h3 class="project-name">
+                  <span>StudyCycle</span>
+                </h3>
+                <span class="project-status status-current">Active Project</span>
+              </div>
+              <p class="project-summary">
+                A circular student-sharing initiative where students can donate, swap, and reuse gently used school supplies and textbooks to reduce campus waste.
+              </p>
+              <div class="project-meta-list">
+                <div class="meta-row">
+                  <strong>Focus:</strong>
+                  <span>Circular Economy & Student Equity</span>
+                </div>
+                <div class="meta-row">
+                  <strong>Location:</strong>
+                  <span>WOSS Main Foyer & Library Hub</span>
+                </div>
+                <div class="meta-row">
+                  <strong>Schedule:</strong>
+                  <span>Open Daily for Drop-Off & Exchange</span>
+                </div>
+              </div>
+              <button class="project-accordion-toggle" aria-expanded="false">
+                <span>View initiative details & how to donate</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="project-expanded-content">
+                StudyCycle provides collection bins in the main foyer before midterms and at year-end locker cleanouts. Donated binders, calculators, and textbooks are inspected, sorted, and redistributed for free at the start of each semester, saving students money and keeping hundreds of kilograms of usable supplies out of landfills.
+              </div>
+            </article>
+
+            <!-- Current Project 2: Native Pollinator Garden -->
+            <article class="project-card" data-category="current">
+              <div class="project-header">
+                <h3 class="project-name">
+                  <span>Native Pollinator Garden</span>
+                </h3>
+                <span class="project-status status-current">Active Project</span>
+              </div>
+              <p class="project-summary">
+                A hands-on restoration project on school grounds where members plant and maintain native flora to support local biodiversity and ecosystems.
+              </p>
+              <div class="project-meta-list">
+                <div class="meta-row">
+                  <strong>Focus:</strong>
+                  <span>Biodiversity & Urban Habitat Restoration</span>
+                </div>
+                <div class="meta-row">
+                  <strong>Flora:</strong>
+                  <span>Coneflowers, Milkweed, Wild Bergamot</span>
+                </div>
+                <div class="meta-row">
+                  <strong>Workdays:</strong>
+                  <span>Bi-weekly Gardening After School</span>
+                </div>
+              </div>
+              <button class="project-accordion-toggle" aria-expanded="false">
+                <span>View garden maintenance & volunteer roles</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="project-expanded-content">
+                Constructed in partnership with local ecological nurseries, the garden features drought-resistant southern Ontario perennials that require zero artificial fertilizers or heavy watering. Student caretakers mulch, weed, track pollinator visits, and cultivate natural habitat for native bees and monarch butterflies.
+              </div>
+            </article>
+
+            <!-- Past Project 1: Seasonal Oakville Cleanups -->
+            <article class="project-card" data-category="past">
+              <div class="project-header">
+                <h3 class="project-name">
+                  <span>Seasonal Oakville Cleanups</span>
+                </h3>
+                <span class="project-status status-past">Completed Milestone</span>
+              </div>
+              <p class="project-summary">
+                Seasonal outdoor events where student volunteers gather to collect litter and keep our school grounds and local Oakville parks clean.
+              </p>
+              <div class="project-meta-list">
+                <div class="meta-row">
+                  <strong>Impact:</strong>
+                  <span>180+ kg of Litter & Plastic Diverted</span>
+                </div>
+                <div class="meta-row">
+                  <strong>Turnout:</strong>
+                  <span>85+ High School Volunteers</span>
+                </div>
+                <div class="meta-row">
+                  <strong>Partners:</strong>
+                  <span>Town of Oakville Park Stewards</span>
+                </div>
+              </div>
+              <button class="project-accordion-toggle" aria-expanded="false">
+                <span>View cleanup summary & results</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="project-expanded-content">
+                Our spring and autumn cleanups mobilized student teams along McCraney Valley Park and White Oaks ravines. All recovered materials were sorted into recyclable metals, hard plastics, and landfill waste, with hazardous items handled safely by municipal coordinators.
+              </div>
+            </article>
+
+            <!-- Past Project 2: School-Wide Waste & Energy Audits -->
+            <article class="project-card" data-category="past">
+              <div class="project-header">
+                <h3 class="project-name">
+                  <span>School-Wide Waste & Energy Audits</span>
+                </h3>
+                <span class="project-status status-past">Completed Milestone</span>
+              </div>
+              <p class="project-summary">
+                A monitoring program to audit classroom recycling and run energy conservation challenges across WOSS.
+              </p>
+              <div class="project-meta-list">
+                <div class="meta-row">
+                  <strong>Reach:</strong>
+                  <span>65 Classrooms & Science Labs Audited</span>
+                </div>
+                <div class="meta-row">
+                  <strong>Result:</strong>
+                  <span>25% Reduction in Phantom Lighting</span>
+                </div>
+                <div class="meta-row">
+                  <strong>Recognition:</strong>
+                  <span>HDSB Green School Excellence Ribbon</span>
+                </div>
+              </div>
+              <button class="project-accordion-toggle" aria-expanded="false">
+                <span>View audit methodology & data</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="project-expanded-content">
+                Student audit squads logged contamination rates in classroom paper and blue bins while verifying that computer monitors and projector units were powered down after final period. Classes received eco-rating stickers and teachers competed in our "Lights-Out Lunch" challenge.
+              </div>
+            </article>
+
+            <!-- Future Project 1: Climate Awareness Days -->
+            <article class="project-card" data-category="future">
+              <div class="project-header">
+                <h3 class="project-name">
+                  <span>Climate Awareness Days</span>
+                </h3>
+                <span class="project-status status-future">Upcoming Campaign</span>
+              </div>
+              <p class="project-summary">
+                Interactive campaigns designed to educate the student body on sustainable daily habits and youth climate action.
+              </p>
+              <div class="project-meta-list">
+                <div class="meta-row">
+                  <strong>Target Date:</strong>
+                  <span>Spring Earth Week & World Environment Day</span>
+                </div>
+                <div class="meta-row">
+                  <strong>Highlights:</strong>
+                  <span>Guest Youth Speakers & Trivia Booths</span>
+                </div>
+                <div class="meta-row">
+                  <strong>Student Role:</strong>
+                  <span>Campaign Booth Organizers & Speakers</span>
+                </div>
+              </div>
+              <button class="project-accordion-toggle" aria-expanded="false">
+                <span>View campaign agenda & planning team</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="project-expanded-content">
+                Upcoming activities include a school-wide eco-pledge banner signing, interactive lunchtime carbon footprint quizzes, and a zero-waste cafeteria showcase featuring sustainable lunch packing tips and local climate science panels.
+              </div>
+            </article>
+
+            <!-- Link to Dedicated Executive Team Page -->
+            <div class="exec-promo-card">
+              <div class="exec-promo-info">
+                <h3>Meet the Student Leaders Behind Our Initiatives</h3>
+                <p>Discover our dedicated executive board driving sustainability, garden restorations, and climate campaigns at White Oaks Secondary School.</p>
+              </div>
+              <button class="btn btn-primary nav-page-btn" data-target="executives">
+                <span>View Executive Team</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ==========================================================================
+           Contact & Sign-Up Form Section
+           ========================================================================== -->
+      <section class="contact-section" id="contact">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-kicker">Get Involved</span>
+            <h2 class="section-title">Join WOSS EcoClub</h2>
+            <p class="section-subtitle">
+              Connect with local volunteer opportunities, develop hands-on leadership skills, and help make White Oaks Secondary School an Ontario green leader.
+            </p>
+          </div>
+
+          <div class="contact-wrapper">
+            <div class="contact-info-panel">
+              <h3>Ready to Make a Difference?</h3>
+              <p>
+                Whether you have green thumbs for gardening, ideas for zero-waste campaigns, or passion for environmental outreach, there is a place for you on our team.
+              </p>
+
+              <div class="meeting-card">
+                <div class="meeting-card-title">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>General Meeting Schedule</span>
+                </div>
+                <div class="meeting-card-details">
+                  <strong>Every Monday · 3:00 PM – 4:00 PM</strong><br>
+                  Room N139 (North Campus), White Oaks Secondary School<br>
+                  Open to all students from Grades 9 through 12.
+                </div>
+              </div>
+
+              <!-- Official Social, Email & Classroom Channels -->
+              <div class="channel-connect-grid">
+                <a href="https://instagram.com/wossecoschools" target="_blank" rel="noopener noreferrer" class="channel-card instagram-card" aria-label="Visit WOSS EcoSchools Instagram">
+                  <div class="channel-card-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                    </svg>
+                  </div>
+                  <div class="channel-card-info">
+                    <span class="channel-label">Official Instagram</span>
+                    <strong class="channel-handle">@wossecoschools</strong>
+                  </div>
+                  <svg class="channel-external-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+
+                <div class="channel-card classroom-card">
+                  <div class="channel-card-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                      <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                  </div>
+                  <div class="channel-card-info">
+                    <span class="channel-label">Google Classroom</span>
+                    <div class="classroom-code-row">
+                      <code class="classroom-code" id="classroom-code-val">gxzrya6y</code>
+                      <button type="button" class="btn-copy-code" id="copy-code-btn" title="Copy code" aria-label="Copy Classroom Code">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                        </svg>
+                        <span id="copy-btn-text">Copy</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="mailto:wossenvironmentalclub@gmail.com" class="channel-card email-card full-width" aria-label="Email WOSS EcoClub">
+                  <div class="channel-card-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                  </div>
+                  <div class="channel-card-info">
+                    <span class="channel-label">Official Club Email</span>
+                    <strong class="channel-handle">wossenvironmentalclub@gmail.com</strong>
+                  </div>
+                  <svg class="channel-external-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+
+              <ul class="benefits-list">
+                <li class="benefit-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Connect to external volunteering opportunities (such as Oakville Green community initiatives).</span>
+                </li>
+                <li class="benefit-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Part of the United Nations Association in Canada (UNAC) Eco Clubs programme, which provides volunteer hours.</span>
+                </li>
+                <li class="benefit-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Lead your own initiatives with teacher advisor and club executive backing.</span>
+                </li>
+                <li class="benefit-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Connect with like-minded students passionate about environmental justice.</span>
+                </li>
+                <li class="benefit-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Help WOSS maintain Ontario EcoSchools Platinum standing.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="contact-form-panel">
+              <form id="eco-signup-form" method="POST" novalidate>
+                <div class="form-group">
+                  <label for="fullName" class="form-label">
+                    Full Name <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <input 
+                    type="text" 
+                    id="fullName" 
+                    name="fullName" 
+                    class="form-input" 
+                    placeholder="e.g., Betty Luo" 
+                    required 
+                    autocomplete="name"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="schoolEmail" class="form-label">
+                    School Email <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <input 
+                    type="email" 
+                    id="schoolEmail" 
+                    name="schoolEmail" 
+                    class="form-input" 
+                    placeholder="e.g., student@hdsb.ca or your student email" 
+                    required 
+                    autocomplete="email"
+                  />
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.4rem;">
+                    Please provide your active email to receive meeting announcements.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="gradeLevel" class="form-label">
+                    Grade Level <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <select id="gradeLevel" name="gradeLevel" class="form-select" required>
+                    <option value="" disabled selected>Select your grade level</option>
+                    <option value="Grade 9">Grade 9</option>
+                    <option value="Grade 10">Grade 10</option>
+                    <option value="Grade 11">Grade 11</option>
+                    <option value="Grade 12">Grade 12</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <span class="form-label">How would you like to get involved?</span>
+                  <div class="checkbox-group">
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interests" value="Gardening" />
+                      <span>🌱 Gardening & Planting</span>
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interests" value="Event Planning" />
+                      <span>📅 Event Planning</span>
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interests" value="Media/Tech" />
+                      <span>💻 Media & Tech</span>
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interests" value="General Volunteering" />
+                      <span>🤝 General Volunteering</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="message" class="form-label">Message / Project Ideas</label>
+                  <textarea 
+                    id="message" 
+                    name="message" 
+                    class="form-textarea" 
+                    rows="4" 
+                    placeholder="Tell us what eco projects you'd love to see at White Oaks or any questions you have..."
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg" id="submit-btn" style="width: 100%;">
+                  <span>Submit Application</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+
+                <div id="form-feedback" class="form-alert" role="alert" aria-live="polite"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       DEDICATED EXECUTIVE TEAM PAGE VIEW (Clean Unified Roster)
+       ========================================================================== -->
+  <div id="page-executives" class="page-container" style="display: none;">
+    <main class="executives-page-view">
+      <div class="container">
+        
+        <!-- Navigation Back Bar & Breadcrumbs -->
+        <div class="page-back-bar">
+          <button class="back-btn nav-page-btn" data-target="home">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Back to Main Page</span>
+          </button>
+          <div class="page-breadcrumb">
+            <a class="nav-page-btn" data-target="home">Home</a> / <span>Executive Team</span>
+          </div>
+        </div>
+
+        <!-- Executive Page Header -->
+        <div class="exec-page-header">
+          <span class="section-kicker">Student Leadership</span>
+          <h1 class="exec-page-title">WOSS EcoClub Executive Team</h1>
+          <p class="exec-page-subtitle">
+            Meet our dedicated team of student leaders driving environmental stewardship, native habitat restoration, and sustainability campaigns across White Oaks Secondary School.
+          </p>
+        </div>
+
+        <!-- Unified Executive Team Grid (Each with Photo Box, Upload Input, Name, Grade, Role) -->
+        <div class="executives-grid">
+
+          <!-- 1. Bonnie -->
+          <article class="exec-card" data-exec-id="bonnie">
+            <div class="exec-photo-box">
+              <div class="exec-photo-placeholder">
+                <svg class="exec-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <img src="path/to/bonnie.jpg" alt="Bonnie Photo" class="exec-photo-img" onerror="this.style.display='none';" />
+            </div>
+            <h3 class="exec-name">Bonnie</h3>
+            <span class="exec-grade-badge">Grade 12</span>
+            <p class="exec-role-text">Co-President</p>
+          </article>
+
+          <!-- 2. Elif -->
+          <article class="exec-card" data-exec-id="elif">
+            <div class="exec-photo-box">
+              <div class="exec-photo-placeholder">
+                <svg class="exec-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <img src="path/to/elif.jpg" alt="Elif Photo" class="exec-photo-img" onerror="this.style.display='none';" />
+            </div>
+            <h3 class="exec-name">Elif</h3>
+            <span class="exec-grade-badge">Grade 12</span>
+            <p class="exec-role-text">Co-President</p>
+          </article>
+
+          <!-- 3. Hargun -->
+          <article class="exec-card" data-exec-id="hargun">
+            <div class="exec-photo-box">
+              <div class="exec-photo-placeholder">
+                <svg class="exec-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <img src="path/to/hargun.jpg" alt="Hargun Photo" class="exec-photo-img" onerror="this.style.display='none';" />
+            </div>
+            <h3 class="exec-name">Hargun</h3>
+            <span class="exec-grade-badge">Grade 10</span>
+            <p class="exec-role-text">Co-Vice-President</p>
+          </article>
+
+          <!-- 4. Emma -->
+          <article class="exec-card" data-exec-id="emma">
+            <div class="exec-photo-box">
+              <div class="exec-photo-placeholder">
+                <svg class="exec-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <img src="path/to/emma.jpg" alt="Emma Photo" class="exec-photo-img" onerror="this.style.display='none';" />
+            </div>
+            <h3 class="exec-name">Emma</h3>
+            <span class="exec-grade-badge">Grade 10</span>
+            <p class="exec-role-text">Co-Vice-President</p>
+          </article>
+
+          <!-- 5. Betty -->
+          <article class="exec-card" data-exec-id="betty">
+            <div class="exec-photo-box">
+              <div class="exec-photo-placeholder">
+                <svg class="exec-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <img src="path/to/betty.jpg" alt="Betty Photo" class="exec-photo-img" onerror="this.style.display='none';" />
+            </div>
+            <h3 class="exec-name">Betty</h3>
+            <span class="exec-grade-badge">Grade 9</span>
+            <p class="exec-role-text">Communications & Social Media (Director)</p>
+          </article>
+
+          <!-- 6. Sarah -->
+          <article class="exec-card" data-exec-id="sarah">
+            <div class="exec-photo-box">
+              <div class="exec-photo-placeholder">
+                <svg class="exec-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <img src="path/to/sarah.jpg" alt="Sarah Photo" class="exec-photo-img" onerror="this.style.display='none';" />
+            </div>
+            <h3 class="exec-name">Sarah</h3>
+            <span class="exec-grade-badge">Grade 12</span>
+            <p class="exec-role-text">Communications & Social Media (Exec)</p>
+          </article>
+
+          <!-- 7. Harini -->
+          <article class="exec-card" data-exec-id="harini">
+            <div class="exec-photo-box">
+              <div class="exec-photo-placeholder">
+                <svg class="exec-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <img src="path/to/harini.jpg" alt="Harini Photo" class="exec-photo-img" onerror="this.style.display='none';" />
+            </div>
+            <h3 class="exec-name">Harini</h3>
+            <span class="exec-grade-badge">Grade 10</span>
+            <p class="exec-role-text">Secretary</p>
+          </article>
+
+          <!-- 8. Ameer -->
+          <article class="exec-card" data-exec-id="ameer">
+            <div class="exec-photo-box">
+              <div class="exec-photo-placeholder">
+                <svg class="exec-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <img src="path/to/ameer.jpg" alt="Ameer Photo" class="exec-photo-img" onerror="this.style.display='none';" />
+            </div>
+            <h3 class="exec-name">Ameer</h3>
+            <span class="exec-grade-badge">Grade 12</span>
+            <p class="exec-role-text">Treasurer (Director)</p>
+          </article>
+
+          <!-- 9. Cheng -->
+          <article class="exec-card" data-exec-id="cheng">
+            <div class="exec-photo-box">
+              <div class="exec-photo-placeholder">
+                <svg class="exec-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <img src="path/to/cheng.jpg" alt="Cheng Photo" class="exec-photo-img" onerror="this.style.display='none';" />
+            </div>
+            <h3 class="exec-name">Cheng</h3>
+            <span class="exec-grade-badge">Grade 9</span>
+            <p class="exec-role-text">Treasurer (Exec)</p>
+          </article>
+
+          <!-- 10. Vivian -->
+          <article class="exec-card" data-exec-id="vivian">
+            <div class="exec-photo-box">
+              <div class="exec-photo-placeholder">
+                <svg class="exec-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <img src="path/to/vivian.jpg" alt="Vivian Photo" class="exec-photo-img" onerror="this.style.display='none';" />
+            </div>
+            <h3 class="exec-name">Vivian</h3>
+            <span class="exec-grade-badge">Grade 12</span>
+            <p class="exec-role-text">Community Partnerships (Director)</p>
+          </article>
+
+          <!-- 11. Sandra -->
+          <article class="exec-card" data-exec-id="sandra">
+            <div class="exec-photo-box">
+              <div class="exec-photo-placeholder">
+                <svg class="exec-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <img src="path/to/sandra.jpg" alt="Sandra Photo" class="exec-photo-img" onerror="this.style.display='none';" />
+            </div>
+            <h3 class="exec-name">Sandra</h3>
+            <span class="exec-grade-badge">Grade 10</span>
+            <p class="exec-role-text">Community Partnerships (Exec)</p>
+          </article>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       Site Footer
+       ========================================================================== -->
+  <footer class="site-footer">
+    <!-- Ambient Moving Forest/Lake Video Backdrop for Footer -->
+    <video class="footer-video-bg" autoplay muted loop playsinline preload="none">
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-dense-green-forest-41551-large.mp4" type="video/mp4">
+    </video>
+
+    <div class="container footer-content-wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #fff; flex-shrink: 0;">
+              <img src="/assets/aistudio/Green_And_Cream_Aesthetic_Eco_Label_a95defa9.png" alt="WOSS EcoClub Logo" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <h4>WOSS EcoClub</h4>
+          </div>
+          <p>
+            Promoting sustainability, climate education, and youth environmental action at White Oaks Secondary School in Oakville, Ontario.
+          </p>
+          <div style="font-size: 0.8125rem; color: #798e80;">
+            Proud participant in EcoSchools Canada & Halton District School Board environmental initiatives.
+          </div>
+        </div>
+
+        <div>
+          <h5 class="footer-col-title">Navigation</h5>
+          <ul class="footer-links">
+            <li><a class="nav-page-btn" data-target="home">Home</a></li>
+            <li><a class="nav-page-btn" data-target="about">About Our Mission</a></li>
+            <li><a class="nav-page-btn" data-target="projects">Initiatives & Projects</a></li>
+            <li><a class="nav-page-btn" data-target="executives">Executive Team</a></li>
+            <li><a class="nav-page-btn" data-target="contact">Join the Club</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-col-title">Initiatives</h5>
+          <ul class="footer-links">
+            <li><a class="nav-project-filter" data-filter="current">StudyCycle Swap</a></li>
+            <li><a class="nav-project-filter" data-filter="current">Pollinator Sanctuary</a></li>
+            <li><a class="nav-project-filter" data-filter="past">Oakville Cleanups</a></li>
+            <li><a class="nav-project-filter" data-filter="past">Energy Audits</a></li>
+            <li><a class="nav-project-filter" data-filter="future">Climate Awareness Days</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-col-title">Location & Meetings</h5>
+          <p style="font-size: 0.875rem; color: #9db2a2; line-height: 1.5; margin-bottom: 0.75rem;">
+            White Oaks Secondary School<br>
+            1330 Montclair Dr, Oakville, ON L6H 1Z5
+          </p>
+          <p style="font-size: 0.8125rem; color: #798e80; margin-bottom: 0.75rem;">
+            Meetings: Mondays from 3:00 PM – 4:00 PM in Room N139 (North Campus).
+          </p>
+          <div style="padding-top: 0.65rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; gap: 0.45rem;">
+            <a href="mailto:wossenvironmentalclub@gmail.com" style="display: inline-flex; align-items: center; gap: 0.45rem; color: #e2ece4; text-decoration: none; font-size: 0.8125rem;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span>Email: <span style="color: #93c5fd; font-weight: 600;">wossenvironmentalclub@gmail.com</span></span>
+            </a>
+            <a href="https://instagram.com/wossecoschools" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.45rem; color: #e2ece4; text-decoration: none; font-size: 0.8125rem;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e1306c" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              <span>Instagram: <span style="color: #4ade80; font-weight: 600;">@wossecoschools</span></span>
+            </a>
+            <div style="display: inline-flex; align-items: center; gap: 0.45rem; color: #9db2a2; font-size: 0.8125rem;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              <span>Classroom: <code style="font-family: var(--font-mono); color: #4ade80; background: rgba(255,255,255,0.08); padding: 0.1rem 0.35rem; border-radius: 4px; font-weight: 700;">gxzrya6y</code></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © <span id="current-year">2026</span> White Oaks Secondary School EcoClub. All rights reserved.
+        </div>
+        <div style="display: flex; align-items: center; gap: 1.25rem;">
+          <span>Student Environmental Leadership</span>
+          <span aria-hidden="true">·</span>
+          <span>Oakville, Ontario</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Embedded JavaScript (Routing, Image Uploads, Filtering, Form Handling)
+       ========================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Current Year
+      const yearSpan = document.getElementById('current-year');
+      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+      // 2. Multi-Page Navigation Switcher
+      const mainPage = document.getElementById('page-main');
+      const execPage = document.getElementById('page-executives');
+      const navLinks = document.querySelectorAll('.nav-desktop .nav-link');
+
+      function navigateTo(target) {
+        if (target === 'executives') {
+          mainPage.style.display = 'none';
+          execPage.style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          document.title = 'Executive Team | WOSS EcoClub';
+          history.pushState(null, '', '#executives');
+          
+          navLinks.forEach(link => {
+            if (link.dataset.target === 'executives') {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        } else {
+          execPage.style.display = 'none';
+          mainPage.style.display = 'block';
+          document.title = 'WOSS EcoClub | White Oaks Secondary School';
+          
+          if (target && target !== 'home') {
+            const targetElem = document.getElementById(target);
+            if (targetElem) {
+              targetElem.scrollIntoView({ behavior: 'smooth' });
+              history.pushState(null, '', '#' + target);
+            }
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            history.pushState(null, '', '#home');
+          }
+
+          navLinks.forEach(link => {
+            if (link.dataset.target === target) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+
+        // Close mobile drawer if open
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        if (mobileMenu && mobileMenu.classList.contains('open')) {
+          mobileMenu.classList.remove('open');
+          if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+
+      // Check initial URL hash
+      if (window.location.hash === '#executives') {
+        navigateTo('executives');
+      } else {
+        navigateTo('home');
+      }
+
+      window.addEventListener('popstate', () => {
+        if (window.location.hash === '#executives') {
+          navigateTo('executives');
+        } else {
+          navigateTo('home');
+        }
+      });
+
+      // Bind all navigation page buttons
+      document.querySelectorAll('.nav-page-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = btn.dataset.target;
+          if (target) navigateTo(target);
+        });
+      });
+
+      const brandLogoLink = document.getElementById('brand-logo-link');
+      if (brandLogoLink) {
+        brandLogoLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          navigateTo('home');
+        });
+      }
+
+      // 3. Mobile Hamburger Menu Toggle
+      const hamburgerBtn = document.getElementById('hamburger-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (hamburgerBtn && mobileMenu) {
+        hamburgerBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = mobileMenu.classList.contains('open');
+          mobileMenu.classList.toggle('open');
+          hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+            mobileMenu.classList.remove('open');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // 4. Desktop Dropdown
+      const projectsDropdown = document.getElementById('projects-dropdown');
+      if (projectsDropdown) {
+        const dropdownBtn = projectsDropdown.querySelector('.dropdown-btn');
+        dropdownBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          projectsDropdown.classList.toggle('open');
+          const isOpen = projectsDropdown.classList.contains('open');
+          dropdownBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!projectsDropdown.contains(e.target)) {
+            projectsDropdown.classList.remove('open');
+            dropdownBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // 5. Interactive Project Filtering
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const filterSelect = document.getElementById('project-filter-select');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      function applyProjectFilter(category) {
+        filterBtns.forEach(btn => {
+          if (btn.dataset.filter === category) {
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+          } else {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+          }
+        });
+
+        if (filterSelect && filterSelect.value !== category) {
+          filterSelect.value = category;
+        }
+
+        projectCards.forEach(card => {
+          const cardCat = card.dataset.category;
+          if (category === 'all' || cardCat === category) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => applyProjectFilter(btn.dataset.filter));
+      });
+
+      if (filterSelect) {
+        filterSelect.addEventListener('change', (e) => applyProjectFilter(e.target.value));
+      }
+
+      document.querySelectorAll('.nav-project-filter').forEach(elem => {
+        elem.addEventListener('click', (e) => {
+          e.preventDefault();
+          const filterValue = elem.dataset.filter;
+          navigateTo('projects');
+          applyProjectFilter(filterValue);
+          if (projectsDropdown) projectsDropdown.classList.remove('open');
+        });
+      });
+
+      // 6. Accordion Toggles
+      document.querySelectorAll('.project-accordion-toggle').forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+          const content = toggle.nextElementSibling;
+          toggle.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+          content.classList.toggle('show');
+        });
+      });
+
+
+      // 8. Contact Form Handling
+      const signupForm = document.getElementById('eco-signup-form');
+      const formFeedback = document.getElementById('form-feedback');
+
+      if (signupForm && formFeedback) {
+        signupForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const fullNameInput = document.getElementById('fullName');
+          const emailInput = document.getElementById('schoolEmail');
+          const gradeSelect = document.getElementById('gradeLevel');
+          const messageText = document.getElementById('message');
+          const checkedInterests = Array.from(
+            document.querySelectorAll('input[name="interests"]:checked')
+          ).map(cb => cb.value);
+
+          const fullName = fullNameInput ? fullNameInput.value.trim() : '';
+          const schoolEmail = emailInput ? emailInput.value.trim() : '';
+          const gradeLevel = gradeSelect ? gradeSelect.value : '';
+          const message = messageText ? messageText.value.trim() : '';
+
+          if (!fullName || !schoolEmail || !gradeLevel) {
+            formFeedback.className = 'form-alert error';
+            formFeedback.innerHTML = `
+              <div class="alert-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span>Please complete required fields</span>
+              </div>
+              <p>Make sure to provide your name, school email, and select your grade level.</p>
+            `;
+            return;
+          }
+
+          const registrationData = {
+            fullName: fullName,
+            schoolEmail: schoolEmail,
+            gradeLevel: gradeLevel,
+            interests: checkedInterests.length > 0 ? checkedInterests : ['General Interest'],
+            message: message,
+            submittedAt: new Date().toISOString(),
+            status: 'Submitted',
+            school: 'White Oaks Secondary School (WOSS)'
+          };
+
+          console.log('✅ New WOSS EcoClub Registration:', registrationData);
+
+          try {
+            const existing = JSON.parse(localStorage.getItem('woss_ecoclub_members') || '[]');
+            existing.push(registrationData);
+            localStorage.setItem('woss_ecoclub_members', JSON.stringify(existing));
+          } catch (err) {
+            console.warn('LocalStorage unavailable:', err);
+          }
+
+          formFeedback.className = 'form-alert success';
+          formFeedback.innerHTML = `
+            <div class="alert-header">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Thank you for joining WOSS EcoClub! 🌿</span>
+            </div>
+            <p>Welcome to the team, <strong>${escapeHTML(registrationData.fullName)}</strong>! Your registration has been received successfully.</p>
+            <div class="alert-details">
+              <div><strong>Grade:</strong> ${escapeHTML(registrationData.gradeLevel)}</div>
+              <div><strong>Email:</strong> ${escapeHTML(registrationData.schoolEmail)}</div>
+              <div><strong>Focus Areas:</strong> ${registrationData.interests.map(i => escapeHTML(i)).join(', ')}</div>
+              <div style="margin-top: 0.85rem; padding: 0.85rem; background: #ffffff; border-radius: 6px; border: 1px solid #c8e6c9;">
+                <div style="font-weight: 700; margin-bottom: 0.4rem; color: #1b5e20;">Next Steps to Get Connected:</div>
+                <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.875rem;">
+                  <div>📅 <strong>Meetings:</strong> Mondays from 3:00 PM – 4:00 PM in Room N139 (North Campus).</div>
+                  <div>🎓 <strong>Google Classroom:</strong> Join with code <code style="font-family: monospace; font-weight: bold; background: #e8f5e9; padding: 2px 6px; border-radius: 4px; color: #1b5e20;">gxzrya6y</code></div>
+                  <div>📸 <strong>Instagram:</strong> Follow <a href="https://instagram.com/wossecoschools" target="_blank" rel="noopener noreferrer" style="color: #2e7d32; font-weight: 700; text-decoration: underline;">@wossecoschools</a> for announcements and event updates!</div>
+                  <div>✉️ <strong>Email:</strong> <a href="mailto:wossenvironmentalclub@gmail.com" style="color: #2e7d32; font-weight: 700; text-decoration: underline;">wossenvironmentalclub@gmail.com</a></div>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn-reset-form" id="btn-submit-another">Submit another response</button>
+          `;
+
+          signupForm.reset();
+          formFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+          const resetBtn = document.getElementById('btn-submit-another');
+          if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+              formFeedback.className = 'form-alert';
+              formFeedback.innerHTML = '';
+            });
+          }
+        });
+      }
+
+      // 9. Copy Google Classroom Code Feature
+      const copyCodeBtn = document.getElementById('copy-code-btn');
+      if (copyCodeBtn) {
+        copyCodeBtn.addEventListener('click', () => {
+          const codeVal = document.getElementById('classroom-code-val')?.textContent.trim() || 'gxzrya6y';
+          const btnText = document.getElementById('copy-btn-text');
+
+          const updateStatus = () => {
+            if (btnText) btnText.textContent = 'Copied!';
+            copyCodeBtn.classList.add('copied');
+            setTimeout(() => {
+              if (btnText) btnText.textContent = 'Copy';
+              copyCodeBtn.classList.remove('copied');
+            }, 2000);
+          };
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(codeVal).then(updateStatus).catch(updateStatus);
+          } else {
+            // Fallback for non-https/legacy
+            const textarea = document.createElement('textarea');
+            textarea.value = codeVal;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+              document.execCommand('copy');
+            } catch (e) {
+              console.warn(e);
+            }
+            document.body.removeChild(textarea);
+            updateStatus();
+          }
+        });
+      }
+
+      function escapeHTML(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+    });
+  </script>
+</body>
+</html>

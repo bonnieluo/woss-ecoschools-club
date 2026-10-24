@@ -1,0 +1,6 @@
+{
+  "name": "WOSS EcoSchools Club",
+  "description": "Clean, modern, and responsive website for the White Oaks Secondary School (WOSS) EcoSchools Club featuring projects, about us, photo gallery, and student sign-up.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
